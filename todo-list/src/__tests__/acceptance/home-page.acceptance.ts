@@ -6,22 +6,22 @@ describe('HomePage', () => {
   let app: TodoListApplication;
   let client: Client;
 
-  before('setupApplication', async () => {
+before('setupApplication', async () => {
     ({app, client} = await setupApplication());
   });
 
-  after(async () => {
+after(async () => {
     await app.stop();
   });
 
-  it('exposes a default home page', async () => {
+it('exposes a default home page', async () => {
     await client
       .get('/')
       .expect(200)
       .expect('Content-Type', /text\/html/);
   });
 
-  it('exposes self-hosted explorer', async () => {
+it('exposes self-hosted explorer', async () => {
     await client
       .get('/explorer/')
       .expect(200)
@@ -29,3 +29,5 @@ describe('HomePage', () => {
       .expect(/<title>LoopBack API Explorer/);
   });
 });
+
+
